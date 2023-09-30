@@ -1,10 +1,13 @@
 # vsndbot
-Repository of non-unique twitch bot
+Repository of the non-unique twitch bot 
 
+![image](https://cdn.7tv.app/emote/622a6c59af1b8e166ce3ff86/3x.webp)
+![image](https://cdn.7tv.app/emote/622a6c59af1b8e166ce3ff86/3x.webp)
+![image](https://cdn.7tv.app/emote/622a6c59af1b8e166ce3ff86/3x.webp)
 
 # To add the bot:
-1. Use the #request command in the [bot chat](https://twitch.tv/vsndbot)
-2. Ask me in my or bot chat
+1. Use the **#request command** in the **[bot chat](https://twitch.tv/vsndbot)**
+2. **Ask me** in my or bot chat
 
 # To run the bot:
 1. Install all requirements
