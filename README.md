@@ -17,4 +17,4 @@ Repository of non-unique twitch bot
 2. [Developers Twitch channel](https://www.twitch.tv/v1ss0nd)
 3. My Discord : v1ss0nd
 
--You have full rights to copy/modify/use/distribute part or full bot files, even if you don't name me as the author.
+-You have full rights to copy/modify/use/distribute whole bot or part of, even if you don't name me as the author.
