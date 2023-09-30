@@ -7,7 +7,7 @@ class Weather(commands.Cog):
         self.bot = bot
         self.user_langs = self.load_user_langs()
 
-    @commands.command(aliases = ("погода",))
+    @commands.command(aliases = ("погода", "w"))
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def weather(self, ctx: commands.Context, city: str = None):
         api_key = ''
