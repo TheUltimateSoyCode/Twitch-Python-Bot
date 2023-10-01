@@ -112,7 +112,7 @@ class vsndbot(commands.Bot):
                     repo = Repo.clone_from(repo_url, "./temp")
                     Path(f"./temp/{name}").rename(f"./{name}")
                     shutil.rmtree("./temp")
-                    await ctx.reply(f'File "{name}" successfully cloned from ./v1ss0nd/vsndbot_dev/{name}')
+                    await ctx.reply(f'File "{name}" successfully cloned from ./v1ss0nd/vsndbot/{name}')
                 except Exception as e:   
                     await ctx.reply(f"{e}")
                 return
