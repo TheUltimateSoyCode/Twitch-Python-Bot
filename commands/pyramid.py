@@ -11,35 +11,27 @@ class Pyramid(commands.Cog):
             return
         messages = []
 
-        max_length = 500
+        if ctx._bot_is_mod() is False:
+            await ctx.reply("The bot requires a mod to execute this command")
+            return
 
         if ctx.author.is_mod:
             if num < 1 or num > 100:
                 await ctx.reply("Pyramid cant be bigger than 100 messages")
                 return
-            for i in range(1, num + 1):
-                message = (target + " ") * i
-                if len(message) > max_length:
-                    await ctx.reply("This pyramid will be bigger than 500 characters, try to reduce a scale 🤏")
-                    return
 
         if ctx.author.is_vip:
             if num < 1 or num > 30:
                 await ctx.reply("Pyramid cant be bigger than 30 messages")
                 return
-            for i in range(1, num + 1):
-                message = (target + " ") * i
-                if len(message) > max_length:
-                    await ctx.reply("This pyramid will be bigger than 500 characters, try to reduce a scale 🤏")
-                    return
 
         for i in range(1, num + 1):
             message = (target + " ") * i
-            await ctx.send(message)
-            messages.append(message)
+            await ctx.send(f"{message:.500}")
+            messages.append(f"{message:.500}")
             
         for message in reversed(messages[:-1]):
-            await ctx.send(message)
+            await ctx.send(f"{message:.500}")
         
 def prepare(bot):
     bot.add_cog(Pyramid(bot))
