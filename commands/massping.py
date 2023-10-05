@@ -11,7 +11,11 @@ class Massping(commands.Cog):
     async def massping(self, ctx: commands.Context, count: int=None, *, word=None):
         if not ctx.author.is_mod:
             return
-  
+
+        if ctx._bot_is_mod() is False:
+            await ctx.reply("The bot requires a mod to execute this command")
+            return
+
         if count is None:
             chatters = list(ctx.channel.chatters)
             nicknames = [user.name for user in chatters]
