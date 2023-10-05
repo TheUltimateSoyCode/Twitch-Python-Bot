@@ -38,22 +38,21 @@ class Ping(commands.Cog):
             memory_usage_mb = memory_usage / 1024 / 1024 
 
             uptime = time.time() - start_time
-            days, remainder = divmod(uptime, 86400)
             hours, remainder = divmod(uptime, 3600)
             minutes, seconds = divmod(remainder, 60)
             self.user_langs = self.load_user_langs()
             user_lang = self.user_langs.get(ctx.author.name, "en")
             if user_lang != "en":
-                target = f"me {emotes} Current uptime is {int(days)} days {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |"
+                target = f"{emotes} Current uptime: {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |"
                 langpair = f"en|{user_lang}"
-                response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
+                response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=v1ss0nd@yahoo.com")
                 if response.status_code == 200:
                     translated = response.json()["responseData"]["translatedText"]
-                    await ctx.reply(f"/{translated}")
+                    await ctx.reply(f"/me {translated}")
                 else:
                     await ctx.reply(f"{response.status_code}")
             else:
-                await ctx.reply(f'/me {emotes} Current uptime is {int(days)} days {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |')
+                await ctx.reply(f'/me {emotes} Current uptime: {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |')
                 
         except Exception as e:
             await ctx.reply(f'/me pong! ({e})')
