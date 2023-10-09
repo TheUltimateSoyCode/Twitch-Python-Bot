@@ -6,9 +6,6 @@ import requests
 from git import Repo
 import shutil
 from datetime import datetime
-import time
-
-start_time = time.time()
 
 class vsndbot(commands.Bot):
     def __init__(self):
@@ -65,7 +62,7 @@ class vsndbot(commands.Bot):
         else:
             await ctx.reply(f"Cannot find {user_name} FeelsBadMan")
 
-    @commands.command()
+    @commands.command(aliases = ("language",))
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def lang(self, ctx, lang):    
         with open("user_langs.json", "r") as f:
@@ -108,7 +105,7 @@ class vsndbot(commands.Bot):
             
             if action.startswith("clone"):
                 try:
-                    repo_url = f"https://{token}:x-oauth-basic@github.com/v1ss0nd/vsndbot_dev"
+                    repo_url = f"https://{token}:x-oauth-basic@github.com/v1ss0nd/vsndbot"
                     repo = Repo.clone_from(repo_url, "./temp")
                     Path(f"./temp/{name}").rename(f"./{name}")
                     shutil.rmtree("./temp")
