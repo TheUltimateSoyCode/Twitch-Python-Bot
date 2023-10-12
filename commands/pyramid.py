@@ -5,15 +5,11 @@ class Pyramid(commands.Cog):
         self.bot = bot
 
     @commands.command()
-    @commands.cooldown(1, 20, commands.Bucket.user)
+    @commands.cooldown(1, 25, commands.Bucket.user)
     async def pyramid(self, ctx: commands.Context, num: int = 3, *, target: str):
         if not ctx.author.is_mod and not ctx.author.is_vip: 
             return
         messages = []
-
-        if ctx._bot_is_mod() is False:
-            await ctx.reply("The bot requires a mod to execute this command")
-            return
 
         if ctx.author.is_mod:
             if num < 1 or num > 100:
