@@ -1,6 +1,5 @@
 from twitchio.ext import commands
 import time
-import json
 import requests
 import random
 import psutil
@@ -10,10 +9,9 @@ start_time = time.time()
 class Ping(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
-        self.user_langs = self.load_user_langs()
 
     @commands.command(aliases = ("pong", "peng", "pyng", "pung", "pang"))
-    @commands.cooldown(1, 1, commands.Bucket.user)
+    @commands.cooldown(1, 5, commands.Bucket.user)
     async def ping(self, ctx: commands.Context):
         try:
             user_info_url = f'https://api.ivr.fi/v2/twitch/user?login={ctx.channel.name}'
@@ -33,6 +31,7 @@ class Ping(commands.Cog):
             count = emote_data['emote_count']
             random_emote = random.randint(0, count)
             emotes = emote_data['emotes'][random_emote]['name']
+
             process = psutil.Process() 
             memory_usage = process.memory_info().rss 
             memory_usage_mb = memory_usage / 1024 / 1024 
@@ -40,29 +39,11 @@ class Ping(commands.Cog):
             uptime = time.time() - start_time
             hours, remainder = divmod(uptime, 3600)
             minutes, seconds = divmod(remainder, 60)
-            self.user_langs = self.load_user_langs()
-            user_lang = self.user_langs.get(ctx.author.name, "en")
-            if user_lang != "en":
-                target = f"{emotes} Current uptime: {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |"
-                langpair = f"en|{user_lang}"
-                response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=v1ss0nd@yahoo.com")
-                if response.status_code == 200:
-                    translated = response.json()["responseData"]["translatedText"]
-                    await ctx.reply(f"/me {translated}")
-                else:
-                    await ctx.reply(f"{response.status_code}")
-            else:
-                await ctx.reply(f'/me {emotes} Current uptime: {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB |')
+            await ctx.reply(f'/me {emotes} Current uptime: {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | RAM Usage: {memory_usage_mb} MB')
                 
         except Exception as e:
-            await ctx.reply(f'/me pong! ({e})')
+            await ctx.reply(f'pong! Bot is up, but there is some error occurs while executing this command 👉 [{e}] ')
 
-    def load_user_langs(self):
-        try:
-            with open('user_langs.json', 'r') as f:
-                return json.load(f)
-        except FileNotFoundError:
-            return {} 
-    
+
 def prepare(bot):
     bot.add_cog(Ping(bot))
