@@ -22,7 +22,7 @@ class Gpt(commands.Cog):
         response = openai.Completion.create(
             model=model,
             prompt=prompt,
-            max_tokens=50,
+            max_tokens=90,
             temperature=0.28,
             top_p=0.95,
             n=1,
