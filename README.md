@@ -22,4 +22,7 @@ Repository of the non-unique twitch bot
 
 # Notes
 To make the AI module work, you need to use your OpenAI account, or run a local API server. For example, using [GPT4All.](https://github.com/nomic-ai/gpt4all)
+
 But in case if you will use the local one, an AI calculation would use your local hardware to generate responses (Such as: ram and cpu (or gpu/ram/vram). And using models larger than 4 gb will require more than 16 gb of ram (and +-2 gb of vram if you're using a gpu acceleration).
+
+See OpenAI [API Documentation](https://platform.openai.com/docs/api-reference/completions/create) for details
