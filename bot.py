@@ -1,11 +1,12 @@
 from twitchio.ext import commands
+from datetime import datetime
 from pathlib import Path
+from git import Repo
 import asyncio
 import json
 import requests
-from git import Repo
 import shutil
-from datetime import datetime
+import subprocess
 
 class vsndbot(commands.Bot):
     def __init__(self):
@@ -78,7 +79,6 @@ class vsndbot(commands.Bot):
     async def dev(self, ctx: commands.Context, action, *, name: str = None):
         if ctx.author.name == "v1ss0nd":
             token = ""
-
             if action.startswith("reload"):
                 try:
                     self.reload_module(f'commands.{name}')
@@ -117,7 +117,6 @@ class vsndbot(commands.Bot):
                 try:
                     message = subprocess.getstatusoutput(f'{name}')
                     await ctx.reply(f"{message}")
-
                 except Exception as e:   
                     await ctx.reply(f"{e}")
                 return
