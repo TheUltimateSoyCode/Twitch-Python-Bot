@@ -133,10 +133,50 @@ class Pigs(commands.Cog):
         user = ctx.author.name
         if user not in self.points:
             self.points[user] = 5
-        random_points = random.randint(50, 200)
+        random_points = random.randint(30, 400)
         self.points[user] += random_points
+         
+        if random_points < 150:
+            random_emote = (
+            f"🤣", 
+            "👎", 
+            "😹", 
+            "😹", 
+            "🐖💨",
+            "🤡 ",
+            "🤮",
+            "🤢",
+            "😢",
+            "😨",
+            "DansGame",
+            "BibleThump",
+            ":tf:",
+            "haHAA",
+            "peepoSad",
+            )
+            
+        else: 
+            random_emote = (
+            f"😱",
+            "😳", 
+            "🙀",
+            "PogBones",
+            "🥰", 
+            "😊", 
+            "😘", 
+            "😍", 
+            "👍", 
+            "😼",     
+            "☺️", 
+            "🤤", 
+            "B)", 
+            "EZ", 
+            "peepoHappy", 
+            "FeelsOkayMan", 
+            )  
 
-        message = f"You've sold your old pigs and got {random_points} new ones! {self.points[user]} Total"
+        emote = random.choice(random_emote)
+        message = f" You've sold your old pigs and got {random_points} {emote} | {self.points[user]} Total"
         
         if user_lang != "en":
             target = message
