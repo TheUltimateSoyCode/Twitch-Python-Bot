@@ -64,7 +64,6 @@ class Pigs(commands.Cog):
             f"You just saw a few pigs near the Russian-Ukraine border and decided to take them ^", 
             "Steal few pigs🤫", "Bought some contraband pigs from Spain monkaS", "🤔 1^1 = ", 
             "I'll take them :tf: 👉 🐷 ^", 
-            "/me (  FeelsStrongMan  ): Just give them to you for free ^", 
             "🐖💨 ^"
             )
         else: 
@@ -77,7 +76,7 @@ class Pigs(commands.Cog):
             )      
         
         text = random.choice(random_thing)
-        message = f'{text} {random_points}. Now you have {self.points[user]} pigs🐷'
+        message = f'{text} {random_points}. | {self.points[user]} Total'
         if user_lang != "en":
             target = message
             langpair = f"en|{user_lang}"
