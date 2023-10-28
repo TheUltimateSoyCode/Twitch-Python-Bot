@@ -153,7 +153,7 @@ class Pigs(commands.Cog):
             "haHAA",
             "peepoSad",
             )
-            
+
         else: 
             random_emote = (
             f"😱",
@@ -263,9 +263,9 @@ class Pigs(commands.Cog):
                 return json.load(f)
         except FileNotFoundError:
             return {}
-
+            
     @commands.command()
-    @commands.cooldown(1, 2, commands.Bucket.user)
+    @commands.cooldown(1, 5, commands.Bucket.user)
     async def top(self, ctx: commands.Context):
         self.user_langs = self.load_user_langs()
         user_lang = self.user_langs.get(ctx.author.name, "en")
@@ -287,8 +287,15 @@ class Pigs(commands.Cog):
             anti_ping3 = anti_ping2.replace("p", "р")
             anti_ping4 = anti_ping3.replace("o", "о")
             anti_ping5 = anti_ping4.replace("l", "I")
-            anti_ping6 = anti_ping5.replace("s", "Ƨ")
-            message += f"{i+1}.{anti_ping6} - [Rank: {rank}] {points} | \n"
+            anti_ping6 = anti_ping5.replace("v", "ѵ")
+            anti_ping7 = anti_ping6.replace("k", "к")
+            anti_ping8 = anti_ping7.replace("3", "Ӡ")
+            anti_ping9 = anti_ping8.replace("h", "һ")
+            anti_ping10 = anti_ping9.replace("j", "ј")
+            anti_ping11 = anti_ping10.replace("y", "у")
+            anti_ping12 = anti_ping11.replace("w", "ԝ")
+            anti_ping13 = anti_ping12.replace("i", "і")
+            message += f"{i+1}.{anti_ping13} - [Rank: {rank}] {points} | \n"
 
         if user_lang != "en":
             target = message
