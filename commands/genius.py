@@ -16,8 +16,9 @@ class Genius(commands.Cog):
             title = soup.find("p")
             name = soup.find("h1")
             fixed_url = url.replace(" ", "-")
-             
-            await ctx.reply(f"{name.get_text()} - {title.get_text()} | {fixed_url}")
+            description = f"{title.get_text()}"
+
+            await ctx.reply(f"{name.get_text()} - {description:.400} | {fixed_url}")
         except (AttributeError):
             await ctx.reply(f"Cant find {target} FeelsBadMan")
 
