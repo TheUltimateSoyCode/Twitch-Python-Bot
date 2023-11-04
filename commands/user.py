@@ -28,6 +28,7 @@ class User(commands.Cog):
                 followers = data[0]['followers'] 
                 color = data[0]['chatColor'] 
                 bio = data[0]['bio']
+                bio = bio.replace ("None", "")
                 prefix = data[0]['emotePrefix']
                 id = data[0]['id']
                 display_name = data[0]['displayName']
@@ -38,13 +39,14 @@ class User(commands.Cog):
 
                 output_format = "%Y-%m-%d"
                 createdAt = date_object.strftime(output_format)
-                
+
                 await ctx.reply(f"{id} | @{display_name}, Created at: {createdAt} [BANNED: {banReason}😢] | Color: {color} | Prefix: {prefix} | Followers count: {followers} | Chatters count: {chatterCount} | Bio: {bio}")            
             else:
                 chatterCount = data[0]['chatterCount']
                 followers = data[0]['followers'] 
                 color = data[0]['chatColor'] 
                 bio = data[0]['bio']
+                bio = bio.replace ("None", "")
                 prefix = data[0]['emotePrefix']
                 id = data[0]['id']
                 display_name = data[0]['displayName']
