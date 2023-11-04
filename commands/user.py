@@ -6,14 +6,14 @@ class User(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command(aliases = ("u",))
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def user(self, ctx: commands.Context, name :str = None):
-        name = name.replace ("@", "")
-        name = name.replace (",", "")
         if name is None:
             user_name = ctx.author.name
         else:
+            name = name.replace ("@", "")
+            name = name.replace (",", "")
             user_name = name
 
         url = f'https://api.ivr.fi/v2/twitch/user?login={user_name}'
