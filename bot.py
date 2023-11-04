@@ -36,33 +36,6 @@ class vsndbot(commands.Bot):
             if error.command.name == "sell":
                 await ctx.reply(f"You've sold too many pigs. Next sale in 1 hours.")
 
-    @commands.command()
-    @commands.cooldown(1, 2, commands.Bucket.user)
-    async def user(self, ctx: commands.Context, name :str = None):
-        if name is None:
-            user_name = ctx.author.name
-        else:
-            user_name = name
-
-        user = await self.fetch_users([user_name])
-        url = f'https://api.ivr.fi/v2/twitch/user?login={user_name}'
-        response = requests.get(url)
-        data = response.json()
-
-        if user:
-            chatterCount = data[0]['chatterCount']
-            followers = data[0]['followers'] 
-            color = data[0]['chatColor'] 
-            bio = data[0]['bio']
-            prefix = data[0]['emotePrefix']
-
-            user_created_at = user[0].created_at.date()
-
-            user_info = f"{user[0].id} | @{user[0].display_name}, Created at: {user_created_at} | Color: {color} | Prefix: {prefix} | Followers count: {followers} | Chatters count: {chatterCount} | Bio: {bio}"
-            await ctx.reply(user_info)
-        else:
-            await ctx.reply(f"Cannot find {user_name} FeelsBadMan")
-
     @commands.command(aliases = ("language",))
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def lang(self, ctx, lang):    
