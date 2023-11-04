@@ -4,7 +4,6 @@ from pathlib import Path
 from git import Repo
 import asyncio
 import json
-import requests
 import shutil
 import subprocess
 
