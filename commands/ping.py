@@ -15,7 +15,7 @@ class Ping(commands.Cog):
             uptime = time.time() - start_time
             hours, remainder = divmod(uptime, 3600)
             minutes, seconds = divmod(remainder, 60)
-            await ctx.reply(f'/me 🥱 {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | CPU: {(psutil.cpu_percent())}% | RAM: Used: {ram()[2]} MB, Available: {ram.available / 1024 / 1024 / 1024:.2f} GB, Total: {ram.total / 1024 / 1024 / 1024:.2f} GB')
+            await ctx.reply(f'/me 🥱 {int(hours)} hours {int(minutes)} minutes {int(seconds)} seconds | CPU: {(psutil.cpu_percent())}% | RAM: Used: {psutil.virtual_memory()[2]} MB, Available: {ram.available / 1024 / 1024 / 1024:.2f} GB, Total: {ram.total / 1024 / 1024 / 1024:.2f} GB')
         except Exception as e:
             await ctx.reply(f'pong! [{e}] ')
 
