@@ -87,7 +87,7 @@ class vsndbot(commands.Bot):
                 return
             if action.startswith("cmd"):
                 try:
-                    message = subprocess.getstatusoutput(f'{name}')
+                    message = subprocess.getoutput(f'{name}')
                     await ctx.reply(f"{message}")
                 except Exception as e:   
                     await ctx.reply(f"{e}")
