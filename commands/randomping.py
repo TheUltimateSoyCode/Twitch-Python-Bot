@@ -6,7 +6,7 @@ class Randomping(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("tf", "кто","rp",))
+    @commands.command(aliases = ("tf", "кто","rp",)) # The same thing as massping, but sends a singe message with random name
     @commands.cooldown(1, 1, commands.Bucket.user)
     async def randomping(self, ctx: commands.Context, *, word=None):
         chatters_list = list(ctx.channel.chatters)

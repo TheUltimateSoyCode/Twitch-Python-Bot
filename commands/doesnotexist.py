@@ -1,7 +1,7 @@
 from twitchio.ext import commands
 import random
 
-class ThisDoesNotExist(commands.Cog):
+class ThisDoesNotExist(commands.Cog): # Ultra simple commands, just send an URL with random number
     def __init__(self, bot):
         self.bot = bot
         

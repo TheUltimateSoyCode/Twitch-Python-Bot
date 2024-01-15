@@ -1,11 +1,10 @@
 from twitchio.ext import commands
-import requests
 
 class Logs(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command() # Shit soydev™ command that does nothing but sends a link to the page with logs
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def logs(self, ctx: commands.Context, *, word: str = None):
         if word is None:

@@ -6,18 +6,18 @@ class Ascii(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command()
+    @commands.command() # Creates an ascii art, works as shit, and looks ok only in paste.ivr.fi, if you try to paste it to chat or somewhere else it wont look nice at all
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def ascii(self, ctx: commands.Context):
         args = ctx.message.content.split()
-        if len(args) > 1:
+        if len(args) > 1: # Get text
             text = args[1]
-            if len(args) > 2:
+            if len(args) > 2: # Get style
                 style = args[2]
             else:
-                style = "standard"
+                style = "standard" # Full list of styles you can find on pyfiglet docs
             ascii = pyfiglet.figlet_format(text, font=style)
-            fixed = ascii.replace(" ", "_")
+            fixed = ascii.replace(" ", "_") # You can remove it if you dont like how it looks, but at least it tries to fix broken spaces when you copying it.
             response = requests.post("https://paste.ivr.fi/documents", data=fixed)
             if response.status_code == 200:
                 key = response.json()["key"]

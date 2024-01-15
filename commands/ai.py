@@ -7,7 +7,7 @@ class Gpt(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("gpt", "chat"))
+    @commands.command(aliases = ("gpt", "chat")) # Connects to a local gpt instance on your pc, but probably can be used with official openai gpt
     @commands.cooldown(1, 40, commands.Bucket.user)
     async def ai(self, ctx, *, input):
         self.user_langs = self.load_user_langs()
@@ -18,9 +18,9 @@ class Gpt(commands.Cog):
             await ctx.send(f"{ctx.author.name} 🤔 💭 (approx 1-2 minutes)")
 
         try:
-            openai.api_base = ""        
+            openai.api_base = "http://localhost:4891/v1"        
             prompt = f"{input}"
-            model = ""
+            model = "orca-mini-3b.ggmlv3.q4_0.bin"
             
             response = openai.Completion.create(
                 model=model,
@@ -59,7 +59,7 @@ class Gpt(commands.Cog):
             print(f"{a}")
             await ctx.reply(f"{a}")
         return
-        
+
     def load_user_langs(self):
         try:
             with open('user_langs.json', 'r') as f:

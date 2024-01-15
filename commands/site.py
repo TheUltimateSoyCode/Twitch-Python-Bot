@@ -5,7 +5,7 @@ class Site(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command() # Check if the site is down (soydev™ code that looks like a shit but works)
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def site(self, ctx: commands.Context, site: str):
         url = f'https://sitecheck.sucuri.net/api/v3/?scan={site}'

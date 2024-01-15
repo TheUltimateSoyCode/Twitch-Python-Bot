@@ -7,7 +7,7 @@ class Weather_set(commands.Cog):
         self.bot = bot
         self.user_langs = self.load_user_langs()
 
-    @commands.command()
+    @commands.command() # Set default city for !weather
     @commands.cooldown(1, 1, commands.Bucket.user)
     async def set(self, ctx: commands.Context, city: str):
         with open("locations.json", "r") as f:

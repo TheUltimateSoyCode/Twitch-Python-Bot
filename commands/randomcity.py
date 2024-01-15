@@ -8,7 +8,7 @@ class Randomcity(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command(aliases = ("city",))
+    @commands.command(aliases = ("city",)) # Choses random city from a text file, you can change folder, file name, and what exactly file contains.
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def randomcity(self, ctx: commands.Context):
         self.user_langs = self.load_user_langs()

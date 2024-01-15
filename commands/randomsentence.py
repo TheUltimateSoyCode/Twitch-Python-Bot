@@ -8,7 +8,7 @@ class Randomsentence(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command(aliases = ("sentence",))
+    @commands.command(aliases = ("sentence",)) # Get a random sentence, for whatever purpose
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def randomsentence(self, ctx: commands.Context):
         self.user_langs = self.load_user_langs()

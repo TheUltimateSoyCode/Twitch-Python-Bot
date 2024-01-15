@@ -1,16 +1,15 @@
 
 from twitchio.ext  import commands
 import random
-import os
 
 class RandomEmote(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("randomemote", "emote"))
+    @commands.command(aliases = ("randomemote", "emote")) # Random emote
     @commands.cooldown(1, 3, commands.Bucket.user)
-    async def re(self, ctx: commands.Context,  *, number: int=None):
-        max_count = 70
+    async def re(self, ctx: commands.Context, number: int=None, *, tv: str = None ):
+        max_count = 70 # Maximum emotes in one message
 
         Emotes = (
         "😀",
@@ -922,28 +921,29 @@ class RandomEmote(commands.Cog):
         "✒️",
         "✏️",
         "📝"
-        )
+        )   # < Emote list
         
-        if number is None:
-            numb = random.randint(1, 3)
+        if number is None: # If no number given, send 1, 2 or 3 random emotes
+            numb = random.randint(1, 3) # Maximum possible number of emotes in one message
             random_emotes = []
-            for i in range(numb):
+            for i in range(numb): # Print x emotes
                 random_emote = random.choice(Emotes)
                 random_emotes.append(random_emote)
             message = " ".join(random_emotes)
-            await ctx.send(f'{message}')
+            await ctx.send(f'{message}') # Send x emotes
             return
-        
-        if number > max_count:
+            
+        if number > max_count: # If given number is biger than x - 
             await ctx.reply(f"70 emote limit FeelsBadMan")
             return
 
         random_emotes = []
-        for i in range(number):
+        for i in range(number): # If everything is given and alright - 
             random_emote = random.choice(Emotes)
             random_emotes.append(random_emote)
         message = " ".join(random_emotes)
         await ctx.send(f'{message}')
+
 
 
         

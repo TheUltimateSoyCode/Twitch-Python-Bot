@@ -8,21 +8,21 @@ class Remind(commands.Cog):
         self.bot = bot
         self.user_langs = self.load_user_langs()
 
-    @commands.command()
+    @commands.command() # Simple reminder
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def remind(self, ctx: commands.Context):
-        try:
-            time, message = [x.strip() for x in ctx.message.content.split(maxsplit=2)[1:]]
+        try: 
+            time, message = [x.strip() for x in ctx.message.content.split(maxsplit=2)[1:]] # Get time and message
             seconds = convert(time)
 
-        except ValueError:
+        except ValueError: # If provided time is not valid
             await ctx.send(f"@{ctx.author.name}, please provide a valid time and message.")
             return
         
         self.user_langs = self.load_user_langs()
         user_lang = self.user_langs.get(ctx.author.name, "en")
 
-        if user_lang != "en":
+        if user_lang != "en": # Set reminder and translate the response 
             target = f"I'll remind you in {time} < {message} >"
             langpair = f"en|{user_lang}"
             response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
@@ -35,7 +35,7 @@ class Remind(commands.Cog):
             await ctx.send(f'@{ctx.author.name}, I`ll remind you in {time}, < {message} >')
 
         await asyncio.sleep(seconds)
-        if user_lang != "en":
+        if user_lang != "en": # Translate remind and send it 
             target = f'🔔 Your reminder {time} ago < {message} > '
             langpair = f"en|{user_lang}"
             response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
@@ -55,6 +55,7 @@ class Remind(commands.Cog):
         except FileNotFoundError:
             return {} 
 
+# The time that the bot can understand
 def convert(time):
     time_dict = {"s": 1, "m": 60, "h": 3600, "d": 86400, "w": 604800, "mo": 2628000}
     unit = time[-1]

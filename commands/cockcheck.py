@@ -8,7 +8,7 @@ class Cockcheck(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command(aliases=["кокчек"])
+    @commands.command() # Chooses random chatter from viewers list and gives a random percent
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def cockcheck(self, ctx: commands.Context, *, word=None):
         self.user_langs = self.load_user_langs()

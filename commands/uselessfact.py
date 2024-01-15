@@ -7,9 +7,9 @@ class Uselessfact(commands.Cog):
         self.bot = bot
         self.user_langs = self.load_user_langs()
         
-    @commands.command(aliases = ("fact",))
+    @commands.command(aliases = ("fact",)) # Get a useless fact
     async def uselessfact(self, ctx: commands.Context,):
-        self.user_langs = self.load_user_langs()
+        self.user_langs = self.load_user_langs() # Get user languages
         user_lang = self.user_langs.get(ctx.author.name, "en")
         url = f'https://uselessfacts.jsph.pl/api/v2/facts/random'
         response = requests.get(url)
@@ -17,7 +17,7 @@ class Uselessfact(commands.Cog):
         text = data['text']
         message = f'{text}'
 
-        if user_lang != "en":
+        if user_lang != "en": # If language is not en - translate
             target = message
             langpair = f"en|{user_lang}"
             response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
@@ -26,7 +26,7 @@ class Uselessfact(commands.Cog):
                 await ctx.reply(translated)
             else:
                 await ctx.reply(f"{response.status_code}")
-        else:
+        else: # if en 
             await ctx.reply(message)
 
     def load_user_langs(self):

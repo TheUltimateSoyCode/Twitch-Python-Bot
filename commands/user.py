@@ -6,23 +6,23 @@ class User(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("u",))
+    @commands.command(aliases = ("u",)) # Get user info 
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def user(self, ctx: commands.Context, name :str = None):
-        if name is None:
+        if name is None: # If no user given
             user_name = ctx.author.name
-        else:
+        else: # If given, remove all unwanted characters
             name = name.replace ("@", "")
             name = name.replace (",", "")
             user_name = name
 
-        url = f'https://api.ivr.fi/v2/twitch/user?login={user_name}'
+        url = f'https://api.ivr.fi/v2/twitch/user?login={user_name}' 
         response = requests.get(url)
         data = response.json()
-        format = "%Y-%m-%dT%H:%M:%S.%fZ"
+        format = "%Y-%m-%dT%H:%M:%S.%fZ" # Time format
 
-        try:
-            banned = data[0]['banned']
+        try: 
+            banned = data[0]['banned'] # Get data if user is banned
             if banned:
                 chatterCount = data[0]['chatterCount']
                 followers = data[0]['followers'] 
@@ -41,7 +41,7 @@ class User(commands.Cog):
                 createdAt = date_object.strftime(output_format)
 
                 await ctx.reply(f"{id} | @{display_name}, Created at: {createdAt} [BANNED: {banReason}😢] | Color: {color} | Prefix: {prefix} | Followers count: {followers} | Chatters count: {chatterCount} | Bio: {bio}")            
-            else:
+            else: # If not banned
                 chatterCount = data[0]['chatterCount']
                 followers = data[0]['followers'] 
                 color = data[0]['chatColor'] 
@@ -58,7 +58,7 @@ class User(commands.Cog):
                 createdAt = date_object.strftime(output_format)
 
                 await ctx.reply(f"{id} | @{display_name}, Created at: {createdAt} | Color: {color} | Prefix: {prefix} | Followers count: {followers} | Chatters count: {chatterCount} | Bio: {bio}")
-        except Exception:
+        except Exception: # If not found, or there's an error on api side
             await ctx.reply(f"Cannot find {user_name} FeelsBadMan")
 
 def prepare(bot):

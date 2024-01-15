@@ -6,15 +6,15 @@ class Minecraft(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("mc",))
+    @commands.command(aliases = ("mc",)) # Get status of minecraft server 
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def minecraft(self, ctx: commands.Context, server: str):
         self.user_langs = self.load_user_langs()
-        user_lang = self.user_langs.get(ctx.author.name, "en")
+        user_lang = self.user_langs.get(ctx.author.name, "en") # Get user language
         url = f'https://api.mcsrvstat.us/2/{server}'
         response = requests.get(url)
         data = response.json()
-
+        # Get json data from api
         description0 = data['motd']['clean'][1]
         description1 = data['motd']['clean'][0]
         players = data['players']['online'] 
@@ -26,7 +26,7 @@ class Minecraft(commands.Cog):
         if user_lang != "en":
             target = message
             langpair = f"en|{user_lang}"
-            response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
+            response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=v1ss0nd@yahoo.com")
             if response.status_code == 200:
                 translated = response.json()["responseData"]["translatedText"]
                 await ctx.reply(translated)

@@ -5,7 +5,7 @@ class Number(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("randomnumber",))
+    @commands.command(aliases = ("randomnumber",)) # choice random number from x to x 
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def number(self, ctx: commands.Context):
         try:

@@ -5,7 +5,7 @@ class Math(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command() # Simple Calculator
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def math(self, ctx: commands.Context):
         expression = ctx.message.content.split(ctx.prefix + ctx.command.name)[1].strip()

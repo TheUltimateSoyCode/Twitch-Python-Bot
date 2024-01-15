@@ -5,7 +5,7 @@ class Percent(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("%",))
+    @commands.command(aliases = ("%",)) # get a random percentage
     @commands.cooldown(1, 1, commands.Bucket.user)
     async def percent(self, ctx: commands.Context, *, word=None): 
         percent = random.randint(0, 100)

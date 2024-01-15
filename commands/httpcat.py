@@ -1,7 +1,6 @@
 
 from twitchio.ext  import commands
 import random
-import os
 
 class HttpsCat(commands.Cog):
     def __init__(self, bot):
@@ -81,9 +80,8 @@ class HttpsCat(commands.Cog):
         "523",
         "525",
         "530",
-        )
-        
-        
+        ) # There's no way to use randint
+               
         if number is None:
             code = random.choice(numbers)
             await ctx.send(f'https://http.cat/{code}')

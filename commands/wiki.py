@@ -5,10 +5,10 @@ class Wiki(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command()
+    @commands.command() # Wikipedia
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def wiki(self, ctx: commands.Context, language, *, search : str =None):
-        try:
+        try: # Search on english wikipedia if no language given
             if search is None:
                 url1 = f'https://en.wikipedia.org/api/rest_v1/page/summary/{language}'
                 response1 = requests.get(url1)
@@ -21,7 +21,8 @@ class Wiki(commands.Cog):
                 message1 = f'{title1} - {more1} | {link1}'
                 await ctx.reply(message1)
                 return
-
+        
+            #if given:
             url = f'https://{language}.wikipedia.org/api/rest_v1/page/summary/{search}'
             response = requests.get(url)
             data = response.json()
@@ -33,7 +34,7 @@ class Wiki(commands.Cog):
             message = f'{title} - {more} | {link}'
 
             await ctx.reply(message)
-        except Exception:
+        except Exception as e:
             await ctx.reply(f"Nothing found FeelsBadMan")
         return
 

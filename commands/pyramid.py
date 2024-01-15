@@ -4,7 +4,7 @@ class Pyramid(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command()
+    @commands.command() # A pyramid, if your bot doesn't have a verification, change the limit from 100 to 30 or 50.
     @commands.cooldown(1, 25, commands.Bucket.user)
     async def pyramid(self, ctx: commands.Context, num: int = 3, *, target: str):
         if not ctx.author.is_mod and not ctx.author.is_vip: 
@@ -23,7 +23,7 @@ class Pyramid(commands.Cog):
 
         for i in range(1, num + 1):
             message = (target + " ") * i
-            await ctx.send(f"{message:.500}")
+            await ctx.send(f"{message:.500}") # Because twitchio returns an error if message larger than 500.
             messages.append(f"{message:.500}")
             
         for message in reversed(messages[:-1]):

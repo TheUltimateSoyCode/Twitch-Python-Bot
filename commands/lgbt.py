@@ -7,7 +7,7 @@ class Lgbt(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
         
-    @commands.command()
+    @commands.command() # https://booru.soy/_images/6773a1f520b33f2e2ab1b6be8f15cfb5/1789%20-%20SoyBooru.png 
     @commands.cooldown(1, 3, commands.Bucket.user)
     async def lgbt(self, ctx: commands.Context, *, target:str =None):
         Genders = (
@@ -72,8 +72,9 @@ class Lgbt(commands.Cog):
         "Musicagender",    
         "VOCALOIDgender",
         )
+
         randomgender = random.choice(Genders)
-        try:
+        try: # The same code as in wikipedia btw
             if target is None:
                 url1 = f"https://www.lgbtqia.wiki/wiki/{randomgender}"
                 response1 = requests.get(url1)
@@ -83,7 +84,6 @@ class Lgbt(commands.Cog):
                 description1 = f"{title1.get_text()}"
 
                 await ctx.reply(f"{description1:.400} | {fixed_url1}")
-
             else:
                 url = f"https://www.lgbtqia.wiki/wiki/{target}"
                 response = requests.get(url)

@@ -7,7 +7,7 @@ class Randomword(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("word",))
+    @commands.command(aliases = ("word",)) # Get a random word, for whatever purpose
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def randomword(self, ctx: commands.Context,):
         self.user_langs = self.load_user_langs()
@@ -16,9 +16,9 @@ class Randomword(commands.Cog):
         response = requests.get(url)
         data = response.json()
         text = data[0]
-        message = f'{text}'
+        message = f'{text}' # Get the word
 
-        if user_lang != "en":
+        if user_lang != "en": # Translate
             target = message
             langpair = f"en|{user_lang}"
             response = requests.get(f"https://api.mymemory.translated.net/get?q={target}&langpair={langpair}&de=")
