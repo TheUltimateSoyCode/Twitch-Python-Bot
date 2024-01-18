@@ -8,12 +8,13 @@
 
 # Additional information 
 1. [Bot commands](https://v1ss0nd.github.io/)
-2. [Developer's Twitch channel](https://www.twitch.tv/v1ss0nd)
-3. My Discord : v1ss0nd
+2. [Twitch token generator](https://twitchtokengenerator.com/)
+3. [Twitch dev portal](https://dev.twitch.tv/docs/)
+5. My Discord : v1ss0nd
 
 # Notes
-To make the AI module work, you need to use your OpenAI account, or run a local API server. For example, using **[GPT4All.](https://github.com/nomic-ai/gpt4all)** (Documentation you also can find there)
+To make the AI module work, you *may* use your OpenAI account, or just run a local API server. For example, using **[GPT4All.](https://github.com/nomic-ai/gpt4all)** (Documentation you also can find there)
 
-But in case if you will use the local one, an AI calculation would use your local hardware to generate responses (Such as: ram and cpu (or gpu/ram/vram). And using models larger than 4 gb will require more than 16 gb of ram (and +-2 gb of vram if you're using a gpu acceleration).
+But just in case if, you want to use the local one, an AI calculation *WILL* use your local hardware *VERY* hard to generate responses (ram and cpu (or gpu/ram/vram if you choice gpu processing). Using models larger than 4 gb will also require more than 16 gb of ram (in case of gpu processing, probably, more than 4-6 gb vram).
 
 See OpenAI [API Documentation](https://platform.openai.com/docs/api-reference/completions/create) for details
