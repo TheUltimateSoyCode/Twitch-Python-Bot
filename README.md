@@ -10,6 +10,7 @@
 1. [Bot commands](https://v1ss0nd.github.io/)
 2. [Twitch token generator](https://twitchtokengenerator.com/)
 3. [Twitch dev portal](https://dev.twitch.tv/docs/)
+4. [TwitchIO documentation](https://twitchio.dev/en/stable/)
 5. My Discord : v1ss0nd
 
 # Notes
