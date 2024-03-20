@@ -7,7 +7,7 @@ class Gpt(commands.Cog):
     def __init__(self, bot):
         self.bot = bot
 
-    @commands.command(aliases = ("gpt", "chat")) # Connects to a local gpt instance on your pc, but probably can be used with official openai gpt
+    @commands.command(aliases = ("gpt", "chat")) # Connects to a local gpt instance hosted on your pc, and most likely may be used with an official one
     @commands.cooldown(1, 40, commands.Bucket.user)
     async def ai(self, ctx, *, input):
         self.user_langs = self.load_user_langs()
