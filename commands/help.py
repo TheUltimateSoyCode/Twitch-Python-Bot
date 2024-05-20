@@ -7,7 +7,7 @@ class Help(commands.Cog):
     @commands.command()
     @commands.cooldown(1, 2, commands.Bucket.user)
     async def help(self, ctx: commands.Context):  
-        await ctx.reply(f"/me ApuApustaja 👉 https://v1ss0nd.github.io/")
+        await ctx.reply(f"/me ApuApustaja 👉 (link to your website)")
 
 def prepare(bot):
     bot.add_cog(Help(bot))
