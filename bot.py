@@ -51,7 +51,7 @@ class vsndbot(commands.Bot):
 
     @commands.command() 
     async def dev(self, ctx: commands.Context, action, *, name: str = None):
-        if ctx.author.name == "v1ss0nd": # Your name
+        if ctx.author.name == "ZULUL": # Your name
             if action.startswith("reload"): # Reload module
                 try:
                     self.reload_module(f'commands.{name}') 
