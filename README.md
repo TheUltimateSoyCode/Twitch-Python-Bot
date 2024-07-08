@@ -12,7 +12,8 @@
 3. [Twitch dev portal](https://dev.twitch.tv/docs/)
 4. [TwitchIO documentation](https://twitchio.dev/en/stable/)
 5. I **WILL NOT** HELP YOU IF SOMETHING IN THIS CODE DOESN'T WORK, **NEITHER** I WILL UPDATE THIS REPO IN **ANY** WAY
-
+6. Apparently, some commands got broken after recent updates, but anyways feel free to yoink individual features
+ 
 # Notes
 To make the AI module work, you *may* use your OpenAI account, or just run a local API server. For instance using **[GPT4All.](https://github.com/nomic-ai/gpt4all)** (Documentation you also can find there)
 
@@ -22,4 +23,4 @@ See OpenAI [API Documentation](https://platform.openai.com/docs/api-reference/co
 
 # About using the code
 
-I don't care do anything you want to 
+I don't care do anything you want
